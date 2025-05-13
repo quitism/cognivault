@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cognivault</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Cognivault 🧠</h1>
+      <div class="controls">
+        <button onclick="exportThoughts('json')">Export JSON</button>
+        <button onclick="exportThoughts('md')">Export Markdown</button>
+        <input type="file" id="importFile" onchange="importThoughts()" hidden>
+        <button onclick="document.getElementById('importFile').click()">Import</button>
+        <label><input type="checkbox" id="markdownToggle" onchange="renderThoughts()"> Preview</label>
+        <input type="text" id="filterTags" placeholder="#tag filter" oninput="renderThoughts()">
+      </div>
+    </header>
+
+    <main id="thoughtsContainer"></main>
+
+    <footer>
+      <textarea id="newThought" placeholder="Write your thought (use #tags or @IDs)..."></textarea>
+      <input type="text" id="urlInput" placeholder="Attach URL (optional)">
+      <button onclick="addThought()">Add Thought</button>
+    </footer>
+  </div>
+
+  <!-- Markdown rendering library -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
